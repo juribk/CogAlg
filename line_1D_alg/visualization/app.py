@@ -358,7 +358,7 @@ def View_Dert_Image(_range):
     _colums_name = np.insert(_params_name, 0, 'Row')
     _table_columns = [{'id': _name, 'name': _name} for _name in _colums_name]
 
-    _params_name.reverse()
+    # _params_name.reverse()
     _params_count = len(_params_name)
     _x_data = np.arange(len(visi_params.image_r[visi_params.line_number]))
     _z_data = np.full((len(_params_name), len(visi_params.image_r[visi_params.line_number])), np.NAN)
@@ -384,10 +384,10 @@ def View_Dert_Image(_range):
     _fig = go.Figure()
     _fig.add_trace(
         go.Heatmap(
-            z = Norm_Row(_z_data),
+            z = Norm_Row(_z_data[::-1]),
             x = _x_data,
-            y = _params_name,
-            text = _z_data,
+            y = _params_name[::-1],
+            text = _z_data[::-1],
             colorscale = 'Greys',
             showscale = False,
             reversescale = True,
